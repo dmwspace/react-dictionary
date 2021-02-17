@@ -33,6 +33,7 @@ class Dictionary extends Component {
                 this.setState({inUse: true})
                 let definitions = word.definitions
                 this.setState({definitions: definitions})
+                this.textInput.current.focus()
         })      
     }
     formPreventDefault(e) {
@@ -43,11 +44,12 @@ class Dictionary extends Component {
         <h4>No definitions found.</h4> :        
         this.state.definitions.map((item, index) => {
             return (
-                <div>
-                    <h4 key={index}>{item.partOfSpeech}</h4>
+                <div key={index}>
+                    <h4>{item.partOfSpeech}</h4>
                     <h5>{item.definition}</h5>
                 </div>
-            )
+          
+               )
         })
         return (
             <div>

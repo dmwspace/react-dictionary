@@ -46,9 +46,11 @@ class Thesaurus extends Component {
         const synArr = !this.state.synonyms || this.state.synonyms.length === 0 ?
             <h4>No synonyms found</h4> :
             this.state.synonyms.map((item, index) => {
-                return <div>
-                            <h4 key={index}>{item}</h4>
-                       </div>
+                return (
+                    <div key={index}>
+                        <h4>{item}</h4>
+                    </div>
+                )
             })
         return (
             <div>
