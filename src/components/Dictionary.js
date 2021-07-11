@@ -74,8 +74,8 @@ class Dictionary extends Component {
                 </form>
                 {this.state.inUse ?
                     <div>
-                        <h2>Definitions of {this.state.word}:</h2>
-                        <div className="dictionary">
+                        <h2>{this.state.word}:</h2>
+                        <div className="definitions">
                             {defArr}
                         </div>
                     </div>

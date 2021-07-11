@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Badge} from 'react-bootstrap'
 
 class Thesaurus extends Component {
     constructor() {
@@ -36,6 +37,7 @@ class Thesaurus extends Component {
             let synonyms = word.synonyms
             this.setState({synonyms: synonyms})                    
             this.textInput.current.focus()
+            this.textInput.current.value = ""
         })
     }
     formPreventDefault(e) {
@@ -48,13 +50,12 @@ class Thesaurus extends Component {
             this.state.synonyms.map((item, index) => {
                 return (
                     <div key={index}>
-                        <h4>{item}</h4>
+                        <Badge pill variant="success">{item}</Badge>
                     </div>
                 )
             })
         return (
             <div>
-                <h2>Synonyms</h2>
                 <form input="true" onSubmit={this.formPreventDefault}>
                     <input
                         ref={this.textInput}
@@ -67,7 +68,9 @@ class Thesaurus extends Component {
                 {this.state.inUse ?
                     <div>
                         <h2>{this.state.word}</h2>
-                        {synArr}
+                        <div className="synonyms">
+                            {synArr}
+                        </div>
                     </div>
                     : null
                 }

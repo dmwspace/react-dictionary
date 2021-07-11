@@ -1,17 +1,21 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {Tabs, Tab} from "react-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
+import {Nav} from "react-bootstrap";
 
 function Header() {
     return (
-        <Tabs defaultActiveKey="dictionary">
-            <Tab eventKey="dictionary" title="Dictionary">
-                <Link to="/dictionary"></Link>
-            </Tab>
-            <Tab eventKey="thesaurus" title="Thesaurus">
-                <Link to="/thesaurus"></Link>
-            </Tab>
-        </Tabs>
+        <Nav variant="tabs" activeKey="dictionary">
+            <Nav.Item>
+                <LinkContainer to="/dictionary">
+                    <Nav.Link>Dictionary</Nav.Link>
+                </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+                <LinkContainer to="/thesaurus">
+                    <Nav.Link>Thesaurus</Nav.Link>
+                </LinkContainer>
+            </Nav.Item>
+        </Nav>
     )
 }
 export default Header 

@@ -1,4 +1,11 @@
-.dictionary {
+.definitions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.synonyms {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
