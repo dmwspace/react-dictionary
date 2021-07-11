@@ -1,8 +1,13 @@
+.body {
+    height: 100%;
+}
 .definitions {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .synonyms {
@@ -10,4 +15,25 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    width: 18vw;
+    vertical-align: center;
+    height: 3vw;
+    margin: 10px;
+}
+
+.header {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-left: 20px;
 }

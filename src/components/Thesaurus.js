@@ -8,6 +8,7 @@ class Thesaurus extends Component {
         this.state = {
             synonyms: [],
             word: '',
+            submittedWord: '',
             inUse: false
         }
         this.handleChange = this.handleChange.bind(this)
@@ -34,6 +35,7 @@ class Thesaurus extends Component {
         .then(word => {
             console.log(word.synonyms)
             this.setState({inUse: true})
+            this.setState({submittedWord: word.word})
             let synonyms = word.synonyms
             this.setState({synonyms: synonyms})                    
             this.textInput.current.focus()
@@ -46,17 +48,20 @@ class Thesaurus extends Component {
 
     render() {
         const synArr = !this.state.synonyms || this.state.synonyms.length === 0 ?
-            <h4>No synonyms found</h4> :
+            <h4 style={{marginLeft: 10}}>No synonyms found</h4> :
             this.state.synonyms.map((item, index) => {
                 return (
                     <div key={index}>
-                        <Badge pill variant="success">{item}</Badge>
+                        <Badge pill variant="success" dialogClassName="badge"><h2>{item}</h2></Badge>
                     </div>
                 )
             })
         return (
             <div>
-                <form input="true" onSubmit={this.formPreventDefault}>
+                <form input="true" 
+                    onSubmit={this.formPreventDefault}
+                    style={{marginLeft: 20, marginTop: 10}}
+                >
                     <input
                         ref={this.textInput}
                         placeholder="Enter word"
@@ -67,7 +72,7 @@ class Thesaurus extends Component {
                 </form>
                 {this.state.inUse ?
                     <div>
-                        <h2>{this.state.word}</h2>
+                        <h2 style={{marginLeft: 20, marginTop: 10}}>{this.state.submittedWord}</h2>
                         <div className="synonyms">
                             {synArr}
                         </div>

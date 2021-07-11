@@ -8,6 +8,7 @@ class Dictionary extends Component {
         this.state = {
             definitions: [],
             word: "",
+            submittedWord: "",
             inUse: false 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -33,6 +34,7 @@ class Dictionary extends Component {
                 console.log(word.definitions)
                 this.setState({inUse: true})
                 let definitions = word.definitions
+                this.setState({submittedWord: word.word})
                 this.setState({definitions: definitions})
                 this.textInput.current.focus()
                 this.textInput.current.value = ""
@@ -44,12 +46,12 @@ class Dictionary extends Component {
     }
     render() {
         const defArr = !this.state.definitions || this.state.definitions.length === 0 ?
-            <h4>No definitions found.</h4> :        
+            <h4 style={{marginLeft: 10}}>No definitions found.</h4> :        
             this.state.definitions.map((item, index) => {
             return (
                 <Card 
-                    style={{width: '15rem'}}
-                    bg="secondary"
+                    style={{width: '15rem', margin: 10}}
+                    bg="success"
                     key={index}
                     text="white">
                     <Card.Body>
@@ -63,7 +65,10 @@ class Dictionary extends Component {
         })
         return (
             <div>
-                <form input="true" onSubmit={this.formPreventDefault}>
+                <form input="true" 
+                    onSubmit={this.formPreventDefault}
+                    style={{marginLeft: 20, marginTop: 10}}
+                >
                     <input
                         ref={this.textInput}
                         placeholder="Enter word"
@@ -74,7 +79,7 @@ class Dictionary extends Component {
                 </form>
                 {this.state.inUse ?
                     <div>
-                        <h2>{this.state.word}:</h2>
+                        <h2 style={{marginLeft: 20, marginTop: 10}}>{this.state.submittedWord}</h2>
                         <div className="definitions">
                             {defArr}
                         </div>
