@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Card} from "react-bootstrap";
 
 class Dictionary extends Component {
     constructor() {
@@ -34,6 +35,8 @@ class Dictionary extends Component {
                 let definitions = word.definitions
                 this.setState({definitions: definitions})
                 this.textInput.current.focus()
+                this.textInput.current.value = ""
+                console.log(url)
         })      
     }
     formPreventDefault(e) {
@@ -41,19 +44,25 @@ class Dictionary extends Component {
     }
     render() {
         const defArr = !this.state.definitions || this.state.definitions.length === 0 ?
-        <h4>No definitions found.</h4> :        
-        this.state.definitions.map((item, index) => {
+            <h4>No definitions found.</h4> :        
+            this.state.definitions.map((item, index) => {
             return (
-                <div key={index}>
-                    <h4>{item.partOfSpeech}</h4>
-                    <h5>{item.definition}</h5>
-                </div>
+                <Card 
+                    style={{width: '15rem'}}
+                    bg="secondary"
+                    key={index}
+                    text="white">
+                    <Card.Body>
+                        <Card.Title>{item.partOfSpeech}</Card.Title>
+                        <Card.Text>{item.definition}</Card.Text>
+                    </Card.Body> 
+                </Card>
+
           
                )
         })
         return (
             <div>
-                <h2>Definitions</h2>
                 <form input="true" onSubmit={this.formPreventDefault}>
                     <input
                         ref={this.textInput}
@@ -65,8 +74,10 @@ class Dictionary extends Component {
                 </form>
                 {this.state.inUse ?
                     <div>
-                        <h2>{this.state.word}</h2>
-                        {defArr}
+                        <h2>Definitions of {this.state.word}:</h2>
+                        <div className="dictionary">
+                            {defArr}
+                        </div>
                     </div>
                 : null}
             </div>
