@@ -20,6 +20,7 @@ function Header() {
                     </LinkContainer>
                 </Nav.Item>
             </Nav>
+            <p className="citation">Powered by WordsAPI</p>
         </Navbar>
 
 
